@@ -2,8 +2,8 @@
 session_start(); // Required for CSRF
 $host = getenv('MYSQL_HOST') ?: 'localhost';
 $db = getenv('MYSQL_DATABASE') ?: 'judge_system';
-$user = getenv('MYSQL_USER') ?: 'judge_user';
-$pass = getenv('MYSQL_PASSWORD') ?: 'secure_password';
+$user = getenv('MYSQL_USER') ?: 'root';
+$pass = getenv('MYSQL_PASSWORD') ?: '2323';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);

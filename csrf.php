@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 function generateCsrfToken() {
     if (!isset($_SESSION['csrf_token'])) {
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -13,7 +11,6 @@ function validateCsrfToken($token) {
     if (!isset($_SESSION['csrf_token']) || !isset($_SESSION['csrf_token_time'])) {
         return false;
     }
-    // Tokens expire after 30 minutes
     if (time() - $_SESSION['csrf_token_time'] > 1800) {
         unset($_SESSION['csrf_token'], $_SESSION['csrf_token_time']);
         return false;
