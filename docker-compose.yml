@@ -10,10 +10,10 @@ services:
       - ./logs:/var/www/html/logs
       - ./ssl:/var/www/html/ssl
     environment:
-      - MYSQL_HOST=judge-mysql-judge-mysql.l.aivencloud.com
-      - MYSQL_DATABASE=defaultdb
-      - MYSQL_USER=avnadmin
-      - MYSQL_PASSWORD=AVNS_Y4Hy2MeZg6KSrviWwhI
-      - MYSQL_PORT=21509
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_PORT=${MYSQL_PORT}
 volumes:
   mysql_data:
