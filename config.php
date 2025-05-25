@@ -1,12 +1,16 @@
 <?php
 session_start();
-$host = getenv('MYSQL_HOST') ?: 'db';
-$db = getenv('MYSQL_DATABASE') ?: 'judge_system';
-$user = getenv('MYSQL_USER') ?: 'judge_user';
-$pass = getenv('MYSQL_PASSWORD') ?: 'secure_password';
+
+$host = getenv('MYSQL_HOST') ?: 'judge-mysql-judge-mysql.l.aivencloud.com';
+$db = getenv('MYSQL_DATABASE') ?: 'defaultdb';
+$user = getenv('MYSQL_USER') ?: 'avnadmin';
+$pass = getenv('MYSQL_PASSWORD') ?: 'AVNS_Y4Hy2MeZg6KSrviWwhI';
+$port = getenv('MYSQL_PORT') ?: '21509';
+
+$conn = "mysql:host=$host;port=$port;dbname=$db;sslmode=verify-ca;sslrootcert=/var/www/html/ssl/ca.pem";
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $pdo = new PDO($conn, $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     logAction("Database connection failed: " . $e->getMessage());
@@ -16,7 +20,7 @@ try {
 function logAction($message) {
     $logFile = __DIR__ . '/logs/app.log';
     $timestamp = date('Y-m-d H:i:s');
-    $ip = $_SERVER['REMOTE_ADDR'];
+    $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     if (!file_put_contents($logFile, "[$timestamp] [$ip] $message\n", FILE_APPEND)) {
         error_log("Failed to write to $logFile");
     }
