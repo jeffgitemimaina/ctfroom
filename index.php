@@ -1,6 +1,8 @@
 <?php
-session_start(); // Start session for potential user authentication
-require_once 'config.php'; // Include database connection
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once 'config.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,9 +11,8 @@ require_once 'config.php'; // Include database connection
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Judge System - Home</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing styles.css -->
+    <link rel="stylesheet" href="styles.css">
     <style>
-    
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -47,13 +48,14 @@ require_once 'config.php'; // Include database connection
 <body>
     <div class="container">
         <h1>Welcome to the Judge System</h1>
-        <p>Available sections in the judge system (LAMP) tech stack</p>
+        <p>Navigate to the desired section below:</p>
         <div class="nav-menu">
             <a href="admin.php">Admin Dashboard</a>
             <a href="add_judge.php">Add Judge</a>
             <a href="add_score.php">Add Score</a>
             <a href="judge_portal.php">Judge Portal</a>
             <a href="scoreboard.php">Scoreboard</a>
+            <a href="manage_users.php">Manage Users</a>
         </div>
     </div>
 </body>
