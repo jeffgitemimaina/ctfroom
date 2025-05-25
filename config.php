@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $host = getenv('MYSQL_HOST') ?: 'judge-mysql-judge-mysql.l.aivencloud.com';
 $db = getenv('MYSQL_DATABASE') ?: 'judge_system'; // Use judge_system

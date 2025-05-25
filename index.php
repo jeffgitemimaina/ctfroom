@@ -11,7 +11,7 @@ require_once 'config.php'; // Include database connection
     <title>Judge System - Home</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your existing styles.css -->
     <style>
-        /* Inline CSS for basic styling, in case styles.css is minimal */
+    
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -47,7 +47,7 @@ require_once 'config.php'; // Include database connection
 <body>
     <div class="container">
         <h1>Welcome to the Judge System</h1>
-        <p>Navigate to the desired section below:</p>
+        <p>Available sections in the judge system (LAMP) tech stack</p>
         <div class="nav-menu">
             <a href="admin.php">Admin Dashboard</a>
             <a href="add_judge.php">Add Judge</a>
